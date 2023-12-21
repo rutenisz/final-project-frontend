@@ -1,0 +1,30 @@
+.link {
+  text-decoration: none;
+  color: #333; /* Adjust the color as needed */
+}
+
+.wrapper {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.question_text {
+  margin-top: 5px;
+}
+
+.date {
+  color: #888;
+  font-size: 0.8em;
+}

@@ -1,0 +1,9 @@
+.wrapper {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #939090;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
