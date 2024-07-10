@@ -15,23 +15,41 @@ const Header = () => {
     setUserLoggedIn(savedToken !== undefined);
   }, []);
 
+  const onLogout = () => {
+    Cookie.remove("jwt_token");
+    router.push("/user-login");
+  };
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.logo}>Stackoverflow</div>
+      <Link href={"/"} className={styles.logo}>
+        <div className={styles.logo}>Stackoverflow</div>
+      </Link>
       <nav className={styles.navbar}>
         {isUserLoggedIn !== undefined ? (
-          <>
-            <li>
-              <Link href="/user-login">Login</Link>
-            </li>
-            <li>
-              <Link href="/register-user">Register</Link>
-            </li>
-          </>
+          isUserLoggedIn ? (
+            <>
+              <li>
+                <Link href="/add-question">Ask a question</Link>
+              </li>
+              <li>
+                <button className={styles.logout} onClick={onLogout}>
+                  Log out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href="/user-login">Login</Link>
+              </li>
+              <li>
+                <Link href="/register-user">Register</Link>
+              </li>
+            </>
+          )
         ) : (
-          <li>
-            <Link href="/add-question">Ask a question</Link>
-          </li>
+          <p>Loading...</p>
         )}
       </nav>
     </div>

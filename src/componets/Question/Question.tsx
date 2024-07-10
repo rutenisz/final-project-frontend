@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import Answer from "../Answer/Answer";
+import { AnswerType } from "../Answer/Answer";
 
 type QuestionType = {
   _id: string;
   title: string;
   question_text: string;
   date: Date;
+  answers: AnswerType[];
   // user_id: string;
 };
 
@@ -16,6 +19,7 @@ type QuestionComponentType = {
 
 const Question: React.FC<QuestionComponentType> = ({ question }) => {
   const formattedDate = question.date.toLocaleString(); // convert the Date object to a string or another ReactNode type that React can render.
+
   return (
     <Link href={`/question/${question._id}`} className={styles.link}>
       <div className={styles.wrapper}>

@@ -12,6 +12,7 @@ const AddQuestion = () => {
   const [title, setTitle] = useState("");
   const [question_text, setQuestionText] = useState("");
   const [date, setDate] = useState<Date>();
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -36,19 +37,28 @@ const AddQuestion = () => {
     const question = {
       title: title,
       question_text: question_text,
-      date: new Date(),
+    };
+
+    const headers = {
+      authorization: Cookie.get("jwt_token"),
     };
 
     try {
       const response = await axios.post(
         "http://localhost:3001/questions",
-        question
+        question,
+        {
+          headers,
+        }
       );
       console.log(response);
 
       setLoading(false);
 
       if (response.status === 200) {
+        setSuccessMessage("Question added successfully!");
+        setTitle("");
+        setQuestionText("");
         setTimeout(() => {
           router.push("/");
         }, 5000);
@@ -58,12 +68,13 @@ const AddQuestion = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.pageWrapper}>
       <Header />
       <div className={styles.formWrapper}>
         <h1 className={styles.formTitle}>Ask a question:</h1>
 
         <div className={styles.form}>
+          {successMessage && <p className={styles.success}>{successMessage}</p>}
           <label className={styles.label}>Title:</label>
           <input
             className={styles.input}
@@ -77,18 +88,6 @@ const AddQuestion = () => {
             value={question_text}
             onChange={(e) => setQuestionText(e.target.value)}
           ></textarea>
-
-          <label className={styles.label}>Date:</label>
-          <input
-            className={styles.input}
-            type="datetime-local"
-            value={date ? date.toISOString().split(".")[0] : ""}
-            onChange={(e) =>
-              setDate(e.target.value ? new Date(e.target.value) : undefined)
-            }
-            min={new Date().toISOString().split(".")[0]}
-          />
-
           {validationError && <p className={styles.error}>{validationError}</p>}
           <button className={styles.button} onClick={onAddQuestion}>
             Add question

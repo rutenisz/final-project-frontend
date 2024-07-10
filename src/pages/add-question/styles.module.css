@@ -1,6 +1,13 @@
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .formWrapper {
-  max-width: 800px;
+  width: 50%;
   margin: 0 auto;
+  flex: 1 1;
 }
 
 .formTitle {

@@ -6,11 +6,26 @@ import Footer from "../componets/Footer/Footer";
 import Questions from "../componets/Questions/Questions";
 import { useRouter } from "next/router";
 
-export default function LandingPage() {
-  const router = useRouter();
+type QuestionType = {
+  _id: string;
+  title: string;
+  question_text: string;
+  date: Date;
+  answered: boolean;
+  // user_id: string;
+};
 
-  const [questions, setQuestions] = useState<Array<any> | null>(null);
-  console.log(questions);
+export default function LandingPage() {
+  // const router = useRouter();
+
+  const [questions, setQuestions] = useState<QuestionType[] | null>(null);
+  const [filteredQuestions, setFilteredQuestions] = useState<
+    QuestionType[] | null
+  >(null);
+  const [showAnswered, setShowAnswered] = useState(false);
+
+  // console.log(questions);
+
   const fetchQuestions = async () => {
     try {
       const headers = {
@@ -19,6 +34,8 @@ export default function LandingPage() {
       const response = await axios.get("http://localhost:3001/questions", {
         headers,
       });
+      console.log("quest:", response.data.questions);
+
       setQuestions(response.data.questions);
     } catch (err: any) {
       console.log("Err:", err);

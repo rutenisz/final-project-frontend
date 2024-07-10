@@ -22,3 +22,98 @@
   font-size: 14px;
   color: #555;
 }
+
+.answerSection {
+  width: 50%;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.answerWrapper {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.answer_text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 14px;
+  color: #555;
+}
+
+.gained_likes_number {
+  font-size: 14px;
+  color: #007bff; /* blue color */
+}
+
+.formWrapper {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.formTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.error {
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 150px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.deleteButton {
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
